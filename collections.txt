@@ -1,0 +1,1022 @@
+>>> $tags = App\Article::first()->tags;
+=> Illuminate\Database\Eloquent\Collection {#4032
+     all: [
+       App\Tag {#3407
+         id: 1,
+         name: "Laravel",
+         created_at: "2020-08-03 15:39:24",
+         updated_at: "2020-08-03 15:39:24",
+         pivot: Illuminate\Database\Eloquent\Relations\Pivot {#4035
+           article_id: 1,
+           tag_id: 1,
+         },
+       },
+       App\Tag {#4033
+         id: 2,
+         name: "php",
+         created_at: "2020-08-03 15:39:24",
+         updated_at: "2020-08-03 15:39:24",
+         pivot: Illuminate\Database\Eloquent\Relations\Pivot {#3970
+           article_id: 1,
+         },
+       },
+       App\Tag {#4036
+         id: 3,
+         name: "education",
+         created_at: "2020-08-03 15:39:24",
+         updated_at: "2020-08-03 15:39:24",
+         pivot: Illuminate\Database\Eloquent\Relations\Pivot {#3969
+           article_id: 1,
+           tag_id: 3,
+         },
+       },
+     ],
+   }
+>>>
+
+>>> $tags
+=> Illuminate\Database\Eloquent\Collection {#4032
+     all: [
+       App\Tag {#3407
+         id: 1,
+         name: "Laravel",
+         created_at: "2020-08-03 15:39:24",
+         updated_at: "2020-08-03 15:39:24",
+         pivot: Illuminate\Database\Eloquent\Relations\Pivot {#4035
+           article_id: 1,
+           tag_id: 1,
+         },
+       },
+       App\Tag {#4033
+         id: 2,
+         name: "php",
+         created_at: "2020-08-03 15:39:24",
+         updated_at: "2020-08-03 15:39:24",
+         pivot: Illuminate\Database\Eloquent\Relations\Pivot {#3970
+           article_id: 1,
+           tag_id: 2,
+         },
+       },
+       App\Tag {#4036
+         id: 3,
+         name: "education",
+         created_at: "2020-08-03 15:39:24",
+         updated_at: "2020-08-03 15:39:24",
+         pivot: Illuminate\Database\Eloquent\Relations\Pivot {#3969
+           article_id: 1,
+           tag_id: 3,
+         },
+       },
+     ],
+   }
+>>> $tag->first();
+PHP Notice:  Undefined variable: tag in Psy Shell code on line 1
+PHP Error:  Call to a member function first() on null in Psy Shell code on line 1
+>>> $tag->first()
+PHP Notice:  Undefined variable: tag in Psy Shell code on line 1
+PHP Error:  Call to a member function first() on null in Psy Shell code on line 1
+>>> $tags->first()
+=> App\Tag {#3407
+     id: 1,
+     name: "Laravel",
+     created_at: "2020-08-03 15:39:24",
+     updated_at: "2020-08-03 15:39:24",
+     pivot: Illuminate\Database\Eloquent\Relations\Pivot {#4035
+       article_id: 1,
+       tag_id: 1,
+     },
+   }
+>>> $tags->last()
+=> App\Tag {#4036
+     id: 3,
+     name: "education",
+     created_at: "2020-08-03 15:39:24",
+     updated_at: "2020-08-03 15:39:24",
+     pivot: Illuminate\Database\Eloquent\Relations\Pivot {#3969
+       article_id: 1,
+       tag_id: 3,
+     },
+   }
+>>> $tags->where('name', 'laravel')
+=> Illuminate\Database\Eloquent\Collection {#3090
+     all: [],
+   }
+=> Illuminate\Database\Eloquent\Collection {#4031
+     all: [
+       App\Tag {#3407
+         id: 1,
+         name: "Laravel",
+         created_at: "2020-08-03 15:39:24",
+         updated_at: "2020-08-03 15:39:24",
+         pivot: Illuminate\Database\Eloquent\Relations\Pivot {#4035
+           article_id: 1,
+           tag_id: 1,
+         },
+       },
+     ],
+   }
+>>>
+
+>>> App\Tag::where('name', 'Laravel')->first()
+=> App\Tag {#4038
+     id: 1,
+     name: "Laravel",
+     created_at: "2020-08-03 15:39:24",
+   }
+>>>
+
+>>> $tags
+=> Illuminate\Database\Eloquent\Collection {#4032
+     all: [
+       App\Tag {#3407
+         id: 1,
+         name: "Laravel",
+         created_at: "2020-08-03 15:39:24",
+         updated_at: "2020-08-03 15:39:24",
+         pivot: Illuminate\Database\Eloquent\Relations\Pivot {#4035
+           article_id: 1,
+           tag_id: 1,
+         },
+       },
+       App\Tag {#4033
+         id: 2,
+         name: "php",
+         created_at: "2020-08-03 15:39:24",
+         updated_at: "2020-08-03 15:39:24",
+         pivot: Illuminate\Database\Eloquent\Relations\Pivot {#3970
+           article_id: 1,
+           tag_id: 2,
+         },
+       },
+       App\Tag {#4036
+         id: 3,
+         name: "education",
+         created_at: "2020-08-03 15:39:24",
+         updated_at: "2020-08-03 15:39:24",
+         pivot: Illuminate\Database\Eloquent\Relations\Pivot {#3969
+           article_id: 1,
+           tag_id: 3,
+         },
+       },
+     ],
+   }
+>>> $tags->first(function ($tag) { return strlen($tag->name) > 5; });
+=> App\Tag {#3407
+     id: 1,
+     name: "Laravel",
+     created_at: "2020-08-03 15:39:24",
+     updated_at: "2020-08-03 15:39:24",
+     pivot: Illuminate\Database\Eloquent\Relations\Pivot {#4035
+       article_id: 1,
+       tag_id: 1,
+     },
+   }
+>>> $tags->first(function ($tag) { return strlen($tag->name) < 5; });
+=> App\Tag {#4033
+     id: 2,
+     name: "php",
+     created_at: "2020-08-03 15:39:24",
+     updated_at: "2020-08-03 15:39:24",
+     pivot: Illuminate\Database\Eloquent\Relations\Pivot {#3970
+       article_id: 1,
+       tag_id: 2,
+     },
+   }
+>>> q
+Exit:  Goodbye
+PS C:\xampp\htdocs\lsapp> php artisan tinker
+Psy Shell v0.10.4 (PHP 7.4.8 — cli) by Justin Hileman
+>>> collect(['one', 'two', 'three'])
+=> Illuminate\Support\Collection {#3104
+     all: [
+       "one",
+       "two",
+       "three",
+     ],
+   }
+>>> collect(['one', 'two', 'three'])->first()
+=> "one"
+>>> collect(['one', 'two', 'three', ['four', 'five'], 'six'])
+=> Illuminate\Support\Collection {#3112
+     all: [
+       "one",
+       "two",
+       "three",
+       [
+         "four",
+         "five",
+       ],
+       "six",
+     ],
+   }
+>>> collect(['one', 'two', 'three', ['four', 'five'], 'six'])->flatten()
+=> Illuminate\Support\Collection {#3113
+     all: [
+       "one",
+       "three",
+       "four",
+       "five",
+       "six",
+     ],
+   }
+>>> $items = collect([1,2,3,4,5,6,7,8,9,10]);
+=> Illuminate\Support\Collection {#3122
+     all: [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+     ],
+   }
+>>> $items->filter(function ($item) { return $item >= 5; });
+=> Illuminate\Support\Collection {#3110
+     all: [
+       4 => 5,
+       5 => 6,
+       6 => 7,
+       7 => 8,
+       8 => 9,
+       9 => 10,
+     ],
+   }
+>>> $items
+=> Illuminate\Support\Collection {#3122
+     all: [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+     ],
+   }
+>>> $greaterThan4 = $items->filter(function ($item) { return $item >= 5; });
+=> Illuminate\Support\Collection {#3095
+     all: [
+       4 => 5,
+       5 => 6,
+       6 => 7,
+       7 => 8,
+       8 => 9,
+       9 => 10,
+     ],
+   }
+>>> $items->filter(function ($item) { return $item % 2 ===0; });
+=> Illuminate\Support\Collection {#3107
+     all: [
+       1 => 2,
+       3 => 4,
+       5 => 6,
+       7 => 8,
+       9 => 10,
+     ],
+   }
+>>> $items->filter(function ($item) { return $item % 2 ===0; });
+=> Illuminate\Support\Collection {#3104
+     all: [
+       1 => 2,
+       3 => 4,
+       5 => 6,
+       7 => 8,
+       9 => 10,
+     ],
+   }
+>>> $items->filter(function ($item) { return $item % 2 ===0; })->map(function ($item) {retrun $item * 3; });
+PHP Parse error: Syntax error, unexpected T_VARIABLE on line 1
+>>> $items->filter(function ($item) { return $item % 2 ===0; })->map(function ($item) { retrun $item * 3; });
+PHP Parse error: Syntax error, unexpected T_VARIABLE on line 1
+>>> $items->filter(function ($item) { return $item % 2=== 0; })->map(function ($item) { return $item * 3; });
+=> Illuminate\Support\Collection {#3105
+     all: [
+       1 => 6,
+       3 => 12,
+       5 => 18,
+       7 => 24,
+       9 => 30,
+     ],
+   }
+>>> $items->filter(function ($item) { return $item % 2=== 0; })->map(function ($item) { return $item * 3; })->last();
+=> 30
+>>> $articles = App\Aricle::all();
+PHP Fatal error:  Class 'App/Aricle' not found in Psy Shell code on line 1
+>>> $articles = App\Article::all();
+=> Illuminate\Database\Eloquent\Collection {#4039
+     all: [
+       App\Article {#4040
+         id: 1,
+         user_id: 1,
+         title: "Learn Laravel",
+         excerpt: "Laboriosam assumenda explicabo aut.",
+         body: "Explicabo repellat dicta et. Ea illum labore voluptas a voluptatem enim optio. Magnam quidem cum consectetur tempore in consectetur officiis ullam. Nulla repellendus repellat vero explicabo earum distinctio.",
+         created_at: "2020-08-03 10:05:03",
+         updated_at: "2020-08-03 10:05:03",
+       },
+       App\Article {#4041
+         id: 2,
+         user_id: 1,
+         title: "Incidunt veritatis quis atque aut ut quo repudiandae.",
+         excerpt: "Eligendi voluptas occaecati repudiandae dolorem dolores sequi voluptatum.",
+         body: "Quia odio aut et. Debitis rerum non quisquam omnis et accusamus. In perspiciatis placeat non omnis. Sed quaerat facilis dolorem blanditiis.",   
+         created_at: "2020-08-03 10:05:04",
+         updated_at: "2020-08-03 10:05:04",
+       },
+       App\Article {#4042
+         id: 3,
+         user_id: 1,
+         title: "Sed accusamus ipsum ut hic reprehenderit sequi.",
+         excerpt: "Omnis ut quo impedit explicabo praesentium quisquam enim animi.",
+         body: "Nam nulla doloremque quia soluta eos hic ut. Tempore modi illo fugiat fugit.",
+         created_at: "2020-08-03 10:05:04",
+         updated_at: "2020-08-03 10:05:04",
+       },
+       App\Article {#4043
+         id: 4,
+         user_id: 1,
+         title: "Cum voluptatibus necessitatibus dolores porro.",
+         excerpt: "Inventore vero voluptas dolore architecto voluptatem asperiores quia.",
+         body: "Nobis sapiente consequatur voluptas ut. Est nemo qui ut.",
+         created_at: "2020-08-03 10:05:04",
+         updated_at: "2020-08-03 10:05:04",
+       },
+       App\Article {#4044
+         id: 5,
+         user_id: 1,
+         title: "Adipisci aut quas voluptas sequi dolore.",
+         excerpt: "Ea vel rerum doloremque necessitatibus vero.",
+         body: "Sapiente cupiditate velit aut quae eaque ea explicabo non. Recusandae ut eligendi voluptatem asperiores. Qui porro est qui corporis est architecto ipsum.",
+         created_at: "2020-08-03 10:05:04",
+         updated_at: "2020-08-03 10:05:04",
+       },
+       App\Article {#4045
+         id: 13,
+         user_id: 1,
+         title: "cbchjbsajcs",
+         excerpt: "casbhjbcsajbcjbsca",
+         body: "acjsbhcbsajcbsjhcsbjsac",
+         created_at: "2020-08-03 14:19:58",
+         updated_at: "2020-08-03 14:19:58",
+       },
+       App\Article {#4046
+         id: 14,
+         user_id: 1,
+         title: "keep clam",
+         excerpt: "stay safe",
+         body: "stay home",
+         created_at: "2020-08-03 14:49:34",
+         updated_at: "2020-08-03 14:49:34",
+       },
+     ],
+   }
+>>> $articles = App\Article::with('tags')->get();
+=> Illuminate\Database\Eloquent\Collection {#3108
+     all: [
+       App\Article {#4050
+         id: 1,
+         user_id: 1,
+         title: "Learn Laravel",
+         excerpt: "Laboriosam assumenda explicabo aut.",
+         body: "Explicabo repellat dicta et. Ea illum labore voluptas a voluptatem enim optio. Magnam quidem cum consectetur tempore in consectetur officiis ullam. Nulla repellendus repellat vero explicabo earum distinctio.",
+         created_at: "2020-08-03 10:05:03",
+         updated_at: "2020-08-03 10:05:03",
+         tags: Illuminate\Database\Eloquent\Collection {#4063
+           all: [
+             App\Tag {#4072
+               id: 1,
+               name: "Laravel",
+               created_at: "2020-08-03 15:39:24",
+               updated_at: "2020-08-03 15:39:24",
+               pivot: Illuminate\Database\Eloquent\Relations\Pivot {#4071
+                 article_id: 1,
+                 tag_id: 1,
+               },
+             },
+             App\Tag {#4073
+               id: 2,
+               name: "php",
+               created_at: "2020-08-03 15:39:24",
+               updated_at: "2020-08-03 15:39:24",
+               pivot: Illuminate\Database\Eloquent\Relations\Pivot {#4069
+                 article_id: 1,
+                 tag_id: 2,
+               },
+             },
+             App\Tag {#4074
+               id: 3,
+               name: "education",
+               created_at: "2020-08-03 15:39:24",
+               updated_at: "2020-08-03 15:39:24",
+               pivot: Illuminate\Database\Eloquent\Relations\Pivot {#4066
+                 article_id: 1,
+                 tag_id: 3,
+               },
+             },
+           ],
+         },
+       },
+       App\Article {#4051
+         id: 2,
+         user_id: 1,
+         title: "Incidunt veritatis quis atque aut ut quo repudiandae.",
+         excerpt: "Eligendi voluptas occaecati repudiandae dolorem dolores sequi voluptatum.",
+         body: "Quia odio aut et. Debitis rerum non quisquam omnis et accusamus. In perspiciatis placeat non omnis. Sed quaerat facilis dolorem blanditiis.",   
+         created_at: "2020-08-03 10:05:04",
+         updated_at: "2020-08-03 10:05:04",
+         tags: Illuminate\Database\Eloquent\Collection {#3985
+           all: [],
+         },
+       },
+       App\Article {#4052
+         id: 3,
+         user_id: 1,
+         title: "Sed accusamus ipsum ut hic reprehenderit sequi.",
+         excerpt: "Omnis ut quo impedit explicabo praesentium quisquam enim animi.",
+         body: "Nam nulla doloremque quia soluta eos hic ut. Tempore modi illo fugiat fugit.",
+         created_at: "2020-08-03 10:05:04",
+         updated_at: "2020-08-03 10:05:04",
+         tags: Illuminate\Database\Eloquent\Collection {#3118
+           all: [],
+         },
+       },
+       App\Article {#4053
+         id: 4,
+         user_id: 1,
+         title: "Cum voluptatibus necessitatibus dolores porro.",
+         excerpt: "Inventore vero voluptas dolore architecto voluptatem asperiores quia.",
+         body: "Nobis sapiente consequatur voluptas ut. Est nemo qui ut.",
+         created_at: "2020-08-03 10:05:04",
+         updated_at: "2020-08-03 10:05:04",
+         tags: Illuminate\Database\Eloquent\Collection {#3987
+           all: [],
+         },
+       },
+       App\Article {#4054
+         id: 5,
+         user_id: 1,
+         title: "Adipisci aut quas voluptas sequi dolore.",
+         excerpt: "Ea vel rerum doloremque necessitatibus vero.",
+         body: "Sapiente cupiditate velit aut quae eaque ea explicabo non. Recusandae ut eligendi voluptatem asperiores. Qui porro est qui corporis est architecto ipsum.",
+         created_at: "2020-08-03 10:05:04",
+         updated_at: "2020-08-03 10:05:04",
+         tags: Illuminate\Database\Eloquent\Collection {#4047
+           all: [],
+         },
+       },
+       App\Article {#4055
+         id: 13,
+         user_id: 1,
+         title: "cbchjbsajcs",
+         excerpt: "casbhjbcsajbcjbsca",
+         body: "acjsbhcbsajcbsjhcsbjsac",
+         created_at: "2020-08-03 14:19:58",
+         updated_at: "2020-08-03 14:19:58",
+         tags: Illuminate\Database\Eloquent\Collection {#4049
+           all: [
+             App\Tag {#4075
+               id: 1,
+               name: "Laravel",
+               created_at: "2020-08-03 15:39:24",
+               updated_at: "2020-08-03 15:39:24",
+               pivot: Illuminate\Database\Eloquent\Relations\Pivot {#4065
+                 article_id: 13,
+                 tag_id: 1,
+               },
+             },
+             App\Tag {#4076
+               id: 2,
+               name: "php",
+               created_at: "2020-08-03 15:39:24",
+               updated_at: "2020-08-03 15:39:24",
+               pivot: Illuminate\Database\Eloquent\Relations\Pivot {#4068
+                 article_id: 13,
+                 tag_id: 2,
+               },
+             },
+             App\Tag {#4077
+               id: 3,
+               name: "education",
+               created_at: "2020-08-03 15:39:24",
+               updated_at: "2020-08-03 15:39:24",
+               pivot: Illuminate\Database\Eloquent\Relations\Pivot {#4062
+                 article_id: 13,
+                 tag_id: 3,
+               },
+             },
+           ],
+         },
+       },
+       App\Article {#4056
+         id: 14,
+         user_id: 1,
+         title: "keep clam",
+         excerpt: "stay safe",
+         body: "stay home",
+         created_at: "2020-08-03 14:49:34",
+         updated_at: "2020-08-03 14:49:34",
+         tags: Illuminate\Database\Eloquent\Collection {#4057
+           all: [
+             App\Tag {#4078
+               id: 1,
+               name: "Laravel",
+               created_at: "2020-08-03 15:39:24",
+               updated_at: "2020-08-03 15:39:24",
+               pivot: Illuminate\Database\Eloquent\Relations\Pivot {#4059
+                 article_id: 14,
+                 tag_id: 1,
+               },
+             },
+             App\Tag {#4079
+               id: 3,
+               name: "education",
+               created_at: "2020-08-03 15:39:24",
+               updated_at: "2020-08-03 15:39:24",
+               pivot: Illuminate\Database\Eloquent\Relations\Pivot {#4060
+                 article_id: 14,
+                 tag_id: 3,
+               },
+             },
+           ],
+         },
+       },
+     ],
+   }
+>>> $articles
+=> Illuminate\Database\Eloquent\Collection {#3108
+     all: [
+       App\Article {#4050
+         id: 1,
+         user_id: 1,
+         title: "Learn Laravel",
+         excerpt: "Laboriosam assumenda explicabo aut.",
+         body: "Explicabo repellat dicta et. Ea illum labore voluptas a voluptatem enim optio. Magnam quidem cum consectetur tempore in consectetur officiis ullam. Nulla repellendus repellat vero explicabo earum distinctio.",
+         created_at: "2020-08-03 10:05:03",
+         updated_at: "2020-08-03 10:05:03",
+         tags: Illuminate\Database\Eloquent\Collection {#4063
+           all: [
+             App\Tag {#4072
+               id: 1,
+               name: "Laravel",
+               created_at: "2020-08-03 15:39:24",
+               updated_at: "2020-08-03 15:39:24",
+               pivot: Illuminate\Database\Eloquent\Relations\Pivot {#4071
+                 article_id: 1,
+                 tag_id: 1,
+               },
+             },
+             App\Tag {#4073
+               id: 2,
+               name: "php",
+               created_at: "2020-08-03 15:39:24",
+               updated_at: "2020-08-03 15:39:24",
+               pivot: Illuminate\Database\Eloquent\Relations\Pivot {#4069
+                 article_id: 1,
+                 tag_id: 2,
+               },
+             },
+             App\Tag {#4074
+               id: 3,
+               name: "education",
+               created_at: "2020-08-03 15:39:24",
+               updated_at: "2020-08-03 15:39:24",
+               pivot: Illuminate\Database\Eloquent\Relations\Pivot {#4066
+                 article_id: 1,
+                 tag_id: 3,
+               },
+             },
+           ],
+         },
+       },
+       App\Article {#4051
+         id: 2,
+         user_id: 1,
+         title: "Incidunt veritatis quis atque aut ut quo repudiandae.",
+         excerpt: "Eligendi voluptas occaecati repudiandae dolorem dolores sequi voluptatum.",
+         body: "Quia odio aut et. Debitis rerum non quisquam omnis et accusamus. In perspiciatis placeat non omnis. Sed quaerat facilis dolorem blanditiis.",   
+         created_at: "2020-08-03 10:05:04",
+         updated_at: "2020-08-03 10:05:04",
+         tags: Illuminate\Database\Eloquent\Collection {#3985
+           all: [],
+         },
+       },
+       App\Article {#4052
+         id: 3,
+         user_id: 1,
+         title: "Sed accusamus ipsum ut hic reprehenderit sequi.",
+         excerpt: "Omnis ut quo impedit explicabo praesentium quisquam enim animi.",
+         body: "Nam nulla doloremque quia soluta eos hic ut. Tempore modi illo fugiat fugit.",
+         created_at: "2020-08-03 10:05:04",
+         updated_at: "2020-08-03 10:05:04",
+         tags: Illuminate\Database\Eloquent\Collection {#3118
+           all: [],
+         },
+       },
+       App\Article {#4053
+         id: 4,
+         user_id: 1,
+         title: "Cum voluptatibus necessitatibus dolores porro.",
+         excerpt: "Inventore vero voluptas dolore architecto voluptatem asperiores quia.",
+         body: "Nobis sapiente consequatur voluptas ut. Est nemo qui ut.",
+         created_at: "2020-08-03 10:05:04",
+         updated_at: "2020-08-03 10:05:04",
+         tags: Illuminate\Database\Eloquent\Collection {#3987
+           all: [],
+         },
+       },
+       App\Article {#4054
+         id: 5,
+         user_id: 1,
+         title: "Adipisci aut quas voluptas sequi dolore.",
+         excerpt: "Ea vel rerum doloremque necessitatibus vero.",
+         body: "Sapiente cupiditate velit aut quae eaque ea explicabo non. Recusandae ut eligendi voluptatem asperiores. Qui porro est qui corporis est architecto ipsum.",
+         created_at: "2020-08-03 10:05:04",
+         updated_at: "2020-08-03 10:05:04",
+         tags: Illuminate\Database\Eloquent\Collection {#4047
+           all: [],
+         },
+       },
+       App\Article {#4055
+         id: 13,
+         user_id: 1,
+         title: "cbchjbsajcs",
+         excerpt: "casbhjbcsajbcjbsca",
+         body: "acjsbhcbsajcbsjhcsbjsac",
+         created_at: "2020-08-03 14:19:58",
+         updated_at: "2020-08-03 14:19:58",
+         tags: Illuminate\Database\Eloquent\Collection {#4049
+           all: [
+             App\Tag {#4075
+               id: 1,
+               name: "Laravel",
+               created_at: "2020-08-03 15:39:24",
+               updated_at: "2020-08-03 15:39:24",
+               pivot: Illuminate\Database\Eloquent\Relations\Pivot {#4065
+                 article_id: 13,
+                 tag_id: 1,
+               },
+             },
+             App\Tag {#4076
+               id: 2,
+               name: "php",
+               created_at: "2020-08-03 15:39:24",
+               updated_at: "2020-08-03 15:39:24",
+               pivot: Illuminate\Database\Eloquent\Relations\Pivot {#4068
+                 article_id: 13,
+                 tag_id: 2,
+               },
+             },
+             App\Tag {#4077
+               id: 3,
+               name: "education",
+               created_at: "2020-08-03 15:39:24",
+               updated_at: "2020-08-03 15:39:24",
+               pivot: Illuminate\Database\Eloquent\Relations\Pivot {#4062
+                 article_id: 13,
+                 tag_id: 3,
+               },
+             },
+           ],
+         },
+       },
+       App\Article {#4056
+         id: 14,
+         user_id: 1,
+         title: "keep clam",
+         excerpt: "stay safe",
+         body: "stay home",
+         created_at: "2020-08-03 14:49:34",
+         updated_at: "2020-08-03 14:49:34",
+         tags: Illuminate\Database\Eloquent\Collection {#4057
+           all: [
+             App\Tag {#4078
+               id: 1,
+               name: "Laravel",
+               created_at: "2020-08-03 15:39:24",
+               updated_at: "2020-08-03 15:39:24",
+               pivot: Illuminate\Database\Eloquent\Relations\Pivot {#4059
+                 article_id: 14,
+                 tag_id: 1,
+               },
+             },
+             App\Tag {#4079
+               id: 3,
+               name: "education",
+               created_at: "2020-08-03 15:39:24",
+               updated_at: "2020-08-03 15:39:24",
+               pivot: Illuminate\Database\Eloquent\Relations\Pivot {#4060
+                 article_id: 14,
+                 tag_id: 3,
+               },
+             },
+           ],
+         },
+       },
+     ],
+   }
+>>> $articles->pluck('title')
+=> Illuminate\Support\Collection {#4092
+     all: [
+       "Learn Laravel",
+       "Incidunt veritatis quis atque aut ut quo repudiandae.",
+       "Sed accusamus ipsum ut hic reprehenderit sequi.",
+       "Cum voluptatibus necessitatibus dolores porro.",
+       "Adipisci aut quas voluptas sequi dolore.",
+       "cbchjbsajcs",
+       "keep clam",
+     ],
+   }
+>>> $articles->pluck('tags')
+=> Illuminate\Support\Collection {#4041
+     all: [
+       Illuminate\Database\Eloquent\Collection {#4063
+         all: [
+           App\Tag {#4072
+             id: 1,
+             name: "Laravel",
+             created_at: "2020-08-03 15:39:24",
+             updated_at: "2020-08-03 15:39:24",
+             pivot: Illuminate\Database\Eloquent\Relations\Pivot {#4071
+               article_id: 1,
+               tag_id: 1,
+             },
+           },
+           App\Tag {#4073
+             id: 2,
+             name: "php",
+             created_at: "2020-08-03 15:39:24",
+             updated_at: "2020-08-03 15:39:24",
+             pivot: Illuminate\Database\Eloquent\Relations\Pivot {#4069
+               article_id: 1,
+               tag_id: 2,
+             },
+           },
+           App\Tag {#4074
+             id: 3,
+             name: "education",
+             created_at: "2020-08-03 15:39:24",
+             updated_at: "2020-08-03 15:39:24",
+             pivot: Illuminate\Database\Eloquent\Relations\Pivot {#4066
+               article_id: 1,
+               tag_id: 3,
+             },
+           },
+         ],
+       },
+       Illuminate\Database\Eloquent\Collection {#3985
+         all: [],
+       },
+       Illuminate\Database\Eloquent\Collection {#3118
+         all: [],
+       },
+       Illuminate\Database\Eloquent\Collection {#3987
+         all: [],
+       },
+       Illuminate\Database\Eloquent\Collection {#4047
+         all: [],
+       },
+       Illuminate\Database\Eloquent\Collection {#4049
+         all: [
+           App\Tag {#4075
+             id: 1,
+             name: "Laravel",
+             created_at: "2020-08-03 15:39:24",
+             updated_at: "2020-08-03 15:39:24",
+             pivot: Illuminate\Database\Eloquent\Relations\Pivot {#4065
+               article_id: 13,
+               tag_id: 1,
+             },
+           },
+           App\Tag {#4076
+             id: 2,
+             name: "php",
+             created_at: "2020-08-03 15:39:24",
+             updated_at: "2020-08-03 15:39:24",
+             pivot: Illuminate\Database\Eloquent\Relations\Pivot {#4068
+               article_id: 13,
+               tag_id: 2,
+             },
+           },
+           App\Tag {#4077
+             id: 3,
+             name: "education",
+             created_at: "2020-08-03 15:39:24",
+             updated_at: "2020-08-03 15:39:24",
+             pivot: Illuminate\Database\Eloquent\Relations\Pivot {#4062
+               article_id: 13,
+               tag_id: 3,
+             },
+           },
+         ],
+       },
+       Illuminate\Database\Eloquent\Collection {#4057
+         all: [
+           App\Tag {#4078
+             id: 1,
+             name: "Laravel",
+             created_at: "2020-08-03 15:39:24",
+             updated_at: "2020-08-03 15:39:24",
+             pivot: Illuminate\Database\Eloquent\Relations\Pivot {#4059
+               article_id: 14,
+               tag_id: 1,
+             },
+           },
+           App\Tag {#4079
+             id: 3,
+             name: "education",
+             created_at: "2020-08-03 15:39:24",
+             updated_at: "2020-08-03 15:39:24",
+             pivot: Illuminate\Database\Eloquent\Relations\Pivot {#4060
+               article_id: 14,
+               tag_id: 3,
+             },
+           },
+         ],
+       },
+     ],
+   }
+>>> $articles->pluck('tags')->collapse()
+=> Illuminate\Support\Collection {#4086
+     all: [
+       App\Tag {#4072
+         id: 1,
+         name: "Laravel",
+         created_at: "2020-08-03 15:39:24",
+         updated_at: "2020-08-03 15:39:24",
+         pivot: Illuminate\Database\Eloquent\Relations\Pivot {#4071
+           article_id: 1,
+           tag_id: 1,
+         },
+       },
+       App\Tag {#4073
+         id: 2,
+         name: "php",
+         created_at: "2020-08-03 15:39:24",
+         updated_at: "2020-08-03 15:39:24",
+         pivot: Illuminate\Database\Eloquent\Relations\Pivot {#4069
+           article_id: 1,
+           tag_id: 2,
+         },
+       },
+       App\Tag {#4074
+         id: 3,
+         name: "education",
+         created_at: "2020-08-03 15:39:24",
+         updated_at: "2020-08-03 15:39:24",
+         pivot: Illuminate\Database\Eloquent\Relations\Pivot {#4066
+           article_id: 1,
+           tag_id: 3,
+         },
+       },
+       App\Tag {#4075
+         id: 1,
+         name: "Laravel",
+         created_at: "2020-08-03 15:39:24",
+         updated_at: "2020-08-03 15:39:24",
+         pivot: Illuminate\Database\Eloquent\Relations\Pivot {#4065
+           article_id: 13,
+           tag_id: 1,
+         },
+       },
+       App\Tag {#4076
+         id: 2,
+         name: "php",
+         created_at: "2020-08-03 15:39:24",
+         updated_at: "2020-08-03 15:39:24",
+         pivot: Illuminate\Database\Eloquent\Relations\Pivot {#4068
+           article_id: 13,
+           tag_id: 2,
+         },
+       },
+       App\Tag {#4077
+         id: 3,
+         name: "education",
+         created_at: "2020-08-03 15:39:24",
+         updated_at: "2020-08-03 15:39:24",
+         pivot: Illuminate\Database\Eloquent\Relations\Pivot {#4062
+           article_id: 13,
+           tag_id: 3,
+         },
+       },
+       App\Tag {#4078
+         id: 1,
+         name: "Laravel",
+         created_at: "2020-08-03 15:39:24",
+         updated_at: "2020-08-03 15:39:24",
+         pivot: Illuminate\Database\Eloquent\Relations\Pivot {#4059
+           article_id: 14,
+           tag_id: 1,
+         },
+       },
+       App\Tag {#4079
+         id: 3,
+         name: "education",
+         created_at: "2020-08-03 15:39:24",
+         updated_at: "2020-08-03 15:39:24",
+         pivot: Illuminate\Database\Eloquent\Relations\Pivot {#4060
+           article_id: 14,
+           tag_id: 3,
+         },
+       },
+     ],
+   }
+>>> $articles->pluck('tags')->collapse()->pluck('name')
+=> Illuminate\Support\Collection {#4087
+     all: [
+       "Laravel",
+       "php",
+       "education",
+       "Laravel",
+       "php",
+       "education",
+       "Laravel",
+       "education",
+     ],
+   }
+>>> $articles->pluck('tags')->collapse()->pluck('name')->unique();
+=> Illuminate\Support\Collection {#4064
+     all: [
+       "Laravel",
+       "php",
+       "education",
+     ],
+   }
+>>> $articles->pluck('tags.name')
+=> Illuminate\Support\Collection {#4067
+     all: [
+       null,
+       null,
+       null,
+       null,
+       null,
+       null,
+       null,
+     ],
+   }
+>>> $articles->pluck('tags.*.name')
+=> Illuminate\Support\Collection {#3986
+     all: [
+       [
+         "Laravel",
+         "php",
+         "education",
+       ],
+       [],
+       [],
+       [],
+       [],
+       [
+         "Laravel",
+         "php",
+         "education",
+       ],
+       [
+         "Laravel",
+         "education",
+       ],
+     ],
+   }
+>>> $articles->pluck('tags.*.name')->collapse()
+=> Illuminate\Support\Collection {#3107
+     all: [
+       "Laravel",
+       "php",
+       "education",
+       "Laravel",
+       "php",
+       "education",
+       "Laravel",
+       "education",
+     ],
+   }
+>>> $articles->pluck('tags.*.name')->collapse()->unique()
+=> Illuminate\Support\Collection {#4067
+     all: [
+       "Laravel",
+       "php",
+       "education",
+     ],
+   }
+>>> $relevantTags = $articles->pluck('tags.*.name')->collapse()->unique()
+=> Illuminate\Support\Collection {#4064
+     all: [
+       "Laravel",
+       "php",
+       "education",
+     ],
+   }
+>>> $relevantTags = $articles->pluck('tags.*.name')->collapse()->unique()->map(function ($item) { return ucwords($item); });
+=> Illuminate\Support\Collection {#4045
+     all: [
+       "Laravel",
+       "Php",
+       "Education",
+     ],
+   }
